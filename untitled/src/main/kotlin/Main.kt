@@ -1,88 +1,125 @@
+//region IMPORTS
+
+import sun.applet.Main
 import java.util.Scanner
 
+//endregion IMPORTS
+
+//region METHODS
+
+fun pares() {
+    println("=========================================================")
+    println("---------------------------------------------------------")
+    println("=========================================================")
+
+    println("Aqui estão os valores pares dentro do conjunto informado:\n")
+
+    for (A in 1..100) {
+        if(A % 2 == 0) {
+            println("- $A")
+        }
+    }
+    println("------\n")
+}
+
+fun paresArray() {
+    val arrayEven = arrayListOf<Int>()
+    val arrayOdd = arrayListOf<Int>()
+
+    for (A in 0..16) {
+        if(A % 2 == 0) {
+            arrayEven.add(A)
+        }
+        else {
+            arrayOdd.add(A)
+        }
+    }
+
+    println("\n\nA lista de valores pares:")
+    println(arrayEven)
+
+    println("\nA lista de valores ímpares:")
+    println(arrayOdd)
+}
+
+fun notas(N1: Float, N2: Float) {
+
+    val result : Float = (N1 + N2)/2
+    val sentence: String = "| Média final: $result"
+    val presentation: String = "\nO desempenho do aluno foi:"
+
+    if(result >= 9)
+        println(presentation +
+                "\n'A' $sentence")
+
+    else if(result >= 7.5)
+        println(presentation +
+                "\n'A' $sentence")
+
+    else if(result >= 6)
+        println(presentation +
+                "\n'A' $sentence")
+
+    else
+        println(presentation +
+                "\n'D' $sentence")
+}
+
+fun whenTest(var1: Int) {
+    val var3 = var1 % 2
+
+    when(var3) {
+        0 -> println("O número é Par")
+
+        1 -> println("O número é Ímpar")
+    }
+}
+
+//endregion METHODS
+
+//region MAIN
 fun main(args: Array<String>) {
     val reader = Scanner(System.`in`)
+    var isActive = true
 
-    //  Utilizando Int
-    /*
-    println("Digite o primeiro valor:")
-    val value1I: Int = Integer.valueOf(readLine())
-    println("Digite o segundo valor:")
-    val value2I: Int = Integer.valueOf(readLine())
+    print(  "\n1: Para acessar a função de Pares (que imprime todos os valores pares de um conjunto predeterminado);\n" +
+            "2: Para acessar a função de Notas (que imprime o resultado de notas de um aluno, utilizando dois parâmetros de entrada);\n" +
+            "3: Para acessar a função de Pares em Lista (que imprime todos os valores pares e ímpares em dois ArrayLists separados)\n" +
+            "Digite a opção que deseja acessar: ")
 
-    val resultI = ( value1I + value2I ) / 2
-
-    print("O valor da média é: $resultI")
-
-    //  Utilizando Float
-    println("Digite o primeiro valor:")
-    val value1F: Float = reader.nextFloat()
-    println("Digite o segundo valor:")
-    val value2F: Float = reader.nextFloat()
-
-    val resultF = ( value1F + value2F ) / 2
-
-    print("O valor da média é: $resultF")
-    */
-
-
-    //  Utilizando Double
-    /*println("Digite a quantidade de faltas do aluno: ")
-    val faltas: Double = reader.nextDouble()
-    val aulas: Int = 33;
-    val presenca: Double = (25.0 / 100.0) * aulas
-
-    if (faltas <= presenca) {
-
-        println("Digite a primeira nota: ")
-        val value1D: Double = reader.nextDouble()
-        println("Digite a segunda nota: ")
-        val value2D: Double = reader.nextDouble()
-
-        val resultD = ( value1D + value2D ) / 2
-
-        if (resultD >= 9) {
-            println("A nota do aluno foi 'A' e sua média foi $resultD. O aluno está aprovado!")
+    when (val opcao: Int = reader.nextInt()) {
+        1 -> {
+            pares()
+            main(args)
         }
-        else if (resultD >= 7.5) {
-            println("A nota do aluno foi 'B' e sua média foi $resultD. O aluno está aprovado!")
+
+        2 -> {
+            println("=========================================================")
+            println("---------------------------------------------------------")
+            println("=========================================================")
+            print("Digite a primeira nota do aluno (N1): ")
+            val N1: Float = reader.nextFloat()
+            print("Digite a segunda nota do aluno (N2): ")
+            val N2: Float = reader.nextFloat()
+
+            notas(N1, N2)
         }
-        else if (resultD >= 6) {
-            println("A nota do aluno foi 'C' e sua média foi $resultD. O aluno está aprovado!")
+
+        3 -> {
+            paresArray()
         }
-        else if (resultD < 6) {
-            println("A nota do aluno foi 'D' e sua média foi $resultD. O aluno está reprovado!")
-        }
-    } else {
-        println("A nota do aluno foi 'FF'. O aluno está reprovado por Faltas!")
-    }
-    */
 
+        else -> {
+            println("\n\n\n-----------------------------------------------")
+            println(
+                "O valor informado ($opcao) não é uma opção válida!\n" +
+                        "Tente novamente"
+            )
+            println("-----------------------------------------------\n\n")
 
-    //  Utilizando Long
-    /*
-    println("Digite o primeiro valor:")
-    val value1L: Long = reader.nextLong()
-    println("Digite o segundo valor:")
-    val value2L: Long = reader.nextLong()
-
-    val resultL = ( value1L + value2L ) / 2
-
-    print("O valor da média é: $resultL")
-     */
-
-
-
-    for (M in 0..59) {
-        for (S in 0..59) {
-            if (S < 59) {
-                //S += 1
-            } else {
-                //M += 1
-                //S = 0
-            }
+            main(args)
         }
     }
-
 }
+//endregion MAIN
 
