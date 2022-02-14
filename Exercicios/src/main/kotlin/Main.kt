@@ -55,10 +55,11 @@ fun whenTest(var1: Int) {
 
 fun notas(N1: Float, N2: Float) {
 
-    val result : Float = (N1 + N2)/2
-    val presentation: String = "\nO desempenho do aluno foi: "
-    val sentence: String = "| Média final: $result \n\n\n"
+    val result : Float = (N1 + N2) / 2
 
+    val presentation: String = "\nO desempenho do aluno foi: "
+    val sentence: String = "| Média final: %.2f \n\n\n".format(result)  //  ".format(val) usado em conjunto com "%.2f" arredonda o
+                                                                        // valor com pontos flutuantes para apenas duas casas decimais
     if(result >= 9)
         println(presentation +
                 "\n'A' $sentence")
@@ -118,7 +119,7 @@ fun main(args: Array<String>) {
     while (isActive) {
         println("-----------------------------------------------------------------------------------------------------------------------------")
         print(  "1: Para acessar a função de Notas (que imprime o resultado da média de notas de um aluno, usando dois parâmetros de entrada);\n" +
-                "2: Para acessar a função de Palíndromos (que imprime se uma palavra informada é um Palíndromo ou não);\n" +
+                "2: Para acessar a função de Palíndromos (que imprime se uma palavra ou frase informada é um Palíndromo ou não);\n" +
                 "0: Para sair do programa\n\n" +
                 "- Digite aqui a opção que deseja acessar: ")
 
@@ -126,17 +127,19 @@ fun main(args: Array<String>) {
             1 -> {
                 println("----------------------------------------\n")
                 print("Digite a primeira nota do aluno (N1): ")
-                val N1: Float = reader.nextFloat()
+                val n1: Float = reader.nextFloat()
                 print("Digite a segunda nota do aluno (N2): ")
-                val N2: Float = reader.nextFloat()
+                val n2: Float = reader.nextFloat()
 
-                notas(N1, N2)
+                notas(n1, n2)
             }
 
             2 -> {
                 println("-------------------------------------------------------------------------\n")
-                print("Digite uma palavra para verificar se ela é um Palíndromo ou não: ")
-                val word: String = readLine()!!.lowercase()
+                print("Digite uma palavra ou frase para verificar se ela é um Palíndromo ou não: ")
+                val word: String = readLine()!!.lowercase().replace("[^a-zA-Z0-9]".toRegex(), "")
+                //  A etapa acima recebe uma string como input, converte tudo para lowercase e substitui
+                //  alguns caracteres para fazer a verificação de Palíndromas
 
                 isPalindrome(word)
             }
