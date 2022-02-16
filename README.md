@@ -1,3 +1,3 @@
-# Android-Development-Class
+# Kotlin Development Class
 
 Exercícios da disciplina de Desenvolvimento Kotlin/Android
