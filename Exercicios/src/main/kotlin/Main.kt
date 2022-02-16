@@ -54,7 +54,6 @@ fun whenTest(var1: Int) {
 //endregion UNUSED METHODS
 
 fun notas(N1: Float, N2: Float) {
-
     val result : Float = (N1 + N2) / 2
 
     val presentation: String = "\nO desempenho do aluno foi: "
@@ -113,6 +112,7 @@ fun isPalindrome(word: String) {
 
 //region MAIN
 fun main(args: Array<String>) {
+    Locale.setDefault(Locale.US);
     val reader = Scanner(System.`in`)
     var isActive = true
 
@@ -131,7 +131,8 @@ fun main(args: Array<String>) {
                 print("Digite a segunda nota do aluno (N2): ")
                 val n2: Float = reader.nextFloat()
 
-                notas(n1, n2)
+                val media = Aluno(n1, n2)
+                println(media.messageSelection())
             }
 
             2 -> {
