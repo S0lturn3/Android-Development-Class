@@ -4,13 +4,9 @@ public class Aluno(n1: Float, n2: Float) {
     private var gradeLetter: Char = 'A'
 
     public fun messageSelection(): String {
-        gradeLetter = if (result >= 7.5) {
-            'B'
-        } else if (result >= 6) {
-            'C'
-        } else {
-            'D'
-        }
+        gradeLetter = if (result >= 7.5) { 'B' }
+                      else if (result >= 6) { 'C' }
+                      else { 'D' }
 
         return ("\n-= DESEMPENHO DO ALUNO =- \n" +
                 "$gradeLetter | Média final: %.2f \n\n\n").format(result)
