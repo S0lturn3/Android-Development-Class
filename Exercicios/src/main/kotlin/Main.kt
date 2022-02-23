@@ -76,23 +76,40 @@ fun notas(N1: Float, N2: Float) {
                 "\n'D' $sentence")
 }
 
-fun isPalindrome(word: String) {
+/**
+ * ### Verificação de Palíndroma usada na classe [main]
+ *
+ * Utiliza um loop *(while)* que percorre o texto `Enquanto` a *última* letra for maior que a
+ * *primeira* para verificar `Se` a primeira e última letra/número são iguais, caso não sejam
+ * retorna uma mensagem de negação ("Não é palíndroma")
+ *
+ *
+ * @param expr Palavra/expressão a ser verificada
+ *
+ * @return Uma mensagem de negação ("Não é palíndroma")
+ *
+ * @exception StringIndexOutOfBoundsException
+ * @exception InputMismatchException
+ *
+ * @author Erick C.
+ * */
+fun isPalindrome(expr: String) {        //  Recebe como parâmetro a expressão a ser verificada
 //    Esta variável representa a primeira letra da String
     var f: Int = 0
 //    Enquanto esta representa a última letra da String
-    var l: Int = word.length - 1
+    var l: Int = expr.length - 1
 //    Esta variável apenas guarda a confirmação se a palavra é um Palíndromo ou não, será usada no loop
     var isPali: Boolean = true
 
 //    Aqui iniciamos um loop que irá se repetir enquanto o index da última
-//    letra (l) for maior que a primeira (f) e a variável isPali for true
+//    letra (l) for maior que a primeira (f) e a variável isPali for verdadeira
     while (isPali && l > f) {
 
 //        SE(a primeira letra da palavra for DIFERENTE da última)
 //        Ao final do loop, a primeira letra passa a ser a segunda
 //        e a última passa a ser a penúltima (e por aí vai, se
 //        baseando no tamanho da String)
-        if (word[f++] != word[l--]) {
+        if (expr[f++] != expr[l--]) {
 //            Se as letras forem diferentes, printe uma mensagem de Erro
 //            e defina a variável isPali para false
             isPali = false
@@ -114,8 +131,8 @@ fun isPalindrome(word: String) {
 fun main(args: Array<String>) {
     Locale.setDefault(Locale.US);
     val reader = Scanner(System.`in`)
-    var isActive = true
 
+    var isActive = true
     while (isActive) {
         println("-----------------------------------------------------------------------------------------------------------------------------")
         print(  "1: Para acessar a função de Notas (que imprime o resultado da média de notas de um aluno, usando dois parâmetros de entrada);\n" +
@@ -138,11 +155,12 @@ fun main(args: Array<String>) {
             2 -> {
                 println("-------------------------------------------------------------------------\n")
                 print("Digite uma palavra ou frase para verificar se ela é um Palíndromo ou não: ")
-                val word: String = readLine()!!.lowercase().replace("[^a-zA-Z0-9]".toRegex(), "")
-                //  A etapa acima recebe uma string como input, converte tudo para lowercase e substitui
-                //  alguns caracteres para fazer a verificação de Palíndromas
+                val expr: String = readLine()!!.lowercase().replace("[^a-zA-Z0-9]".toRegex(), "")
+                //  A linha acima recebe uma string como input, converte tudo para lowercase e substitui
+                //  alguns caracteres para fazer a verificação de Palíndromas, ignorando caracteres especiais
+                //  e pontuações
 
-                isPalindrome(word)
+                isPalindrome(expr)
             }
 
             0 -> {
