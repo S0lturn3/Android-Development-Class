@@ -121,3 +121,78 @@ Op 3 -> sair? <br>
        }
 
     }
+
+
+### EXERCÍCIO 5:
+Faça um programa que realize o cadastro de contas bancárias 
+com as seguintes informações: Número de conta, Nome do cliente, 
+e Saldo atual.
+
+O Banco permitirá o cadastramento de apenas 15 (quinze) 
+contas e não poderá haver mais de uma conta com o mesmo número.
+
+Crie o menu a partir das opções a seguir:
+   1. Cadastrar contas;
+   2. Visualizar todas as contas de determinado cliente;
+   3. Excluir a conta com menor saldo;
+   4. SAIR
+
+
+### RESOLUÇÃO:
+
+	conta = Conta()
+	listaConta = listaDe(conta)
+	opção = input(Int)
+
+	ENQUANTO (opção > 0) {
+
+	   QUANDO (opção) {
+	      1 -> Função conta.abrirConta(nome, num, saldo)
+
+	      2 -> Função conta.verContas(listaConta, nome)
+
+	      3 -> Função conta.excluirConta(listaConta, saldo)
+
+	      4 -> SAIR (opção = 0)
+
+	      SENÃO -> Mostre("Você digitou uma opção inválida!")
+	   }
+
+	}
+
+
+
+Criamos uma classe que conterá as informações da Conta:
+
+	CLASSE Conta {
+	   nomeCliente = input(String)
+	   numConta = input(Int)
+	   saldoConta = input(Float)
+
+
+
+	   função abrirConta(nome, num, saldo, listaConta) {
+	      Conta.nomeCliente = nome
+	      Conta.numConta = num
+	      Conta.saldoConta = saldo
+
+	      listaConta.adicionar()
+	   }
+
+	   função verContas(listaConta, nome) {
+	      PARA (i in listaConta) {
+		 SE (listaConta[i].nome == nome) {
+		    Mostre(listaConta)
+		 }
+	      }
+	   }
+
+	   função excluirConta(listaConta, saldo) {
+	      PARA (i in listaConta) {
+		 SE (listaCliente[i].saldo < i) {
+		    listaConta[i].excluir()
+		 }
+	      }
+	   }
+
+	}
