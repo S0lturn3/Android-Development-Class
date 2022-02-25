@@ -1,0 +1,34 @@
+EXERCÍCIO:
+Faça um programa que mostre todos os Números Primos de 0 a 100
+
+
+RESOLUÇÃO:
+var numero = input(Int)
+var numeroInicio = 0
+var numeroFim = 100
+
+Para encontrar todos os números primos entre dois inteiros, a função checarNPrimo(); é criada. Esta função verifica se um número é primo ou não. 
+
+
+
+Na função checarNPrimo:
+
+enquanto(numeroInicio for menor que numeroFim){
+	se(checarNPrimo(numeroInicio)){
+		mostre(numeroInicio.paraTexto() + "")
+	}
+	numeroInicio +1
+}
+
+
+funcao checarNPrimo(numero: Inteiro): VerdadeiroOuFalso{
+	variavel verificar = verdadeiro
+	para (i em 2 à numero / 2){
+		se (numero % i == 0){
+			verificar = falso
+		}
+	}
+
+	retornar verificar;
+	
+}
